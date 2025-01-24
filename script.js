@@ -15,6 +15,9 @@ function fetchWeather(city){
     fetch(`${urlBase}?q=${city}&appid=${API_KEY}&lang=es`)
     .then(data => data.json())
     .then(data => showWeatherData(data))
+    .catch(error => {
+        alert(error.message);
+    });
 }
 
 function showWeatherData(data){
@@ -38,7 +41,7 @@ function showWeatherData(data){
     humidityInfo.textContent = `La humedad es del ${humidity}%`
 
     const icoInfo = document.createElement('img')
-    icoInfo.src = `https://openweathermap.org/img/wn/${icon}@4x.png`
+    icoInfo.src = `https://openweathermap.org/img/wn/${icon}@3x.png`
 
     const descriptionInfo = document.createElement('p')
     descriptionInfo.textContent = `La descripción meteorológica es ${description}`
